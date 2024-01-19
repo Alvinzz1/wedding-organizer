@@ -50,10 +50,7 @@
     <p class="text">Zayn Wedding</p>
   </div>
 
-
-
-
-
+  
   <!-- 
     - #TOP BAR
   -->
@@ -138,10 +135,18 @@
           </li>
 
           <li class="navbar-item">
-            <a href="#menu" class="navbar-link hover-underline">
+            <a href="#pricelist" class="navbar-link hover-underline">
               <div class="separator"></div>
 
               <span class="span">Pricelist</span>
+            </a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#promo" class="navbar-link hover-underline">
+              <div class="separator"></div>
+
+              <span class="span">Promo</span>
             </a>
           </li>
 
@@ -154,10 +159,10 @@
           </li>
 
           <li class="navbar-item">
-            <a href="#chef" class="navbar-link hover-underline">
+            <a href="#testimoni" class="navbar-link hover-underline">
               <div class="separator"></div>
 
-              <span class="span">Direksi Kami</span>
+              <span class="span">Testimoni</span>
             </a>
           </li>
 
@@ -194,7 +199,7 @@
 
       </nav>
 
-      <a href="#" class="btn btn-secondary">
+      <a href="#reservation" class="btn btn-secondary">
         <span class="text text-1">Find A Date</span>
 
         <span class="text text-2" aria-hidden="true">Find A Date</span>
@@ -229,10 +234,10 @@
           <li class="slider-item active" data-hero-slider-item>
 
             <div class="slider-bg">
-              <img src="{{ asset('images/hero-slider-1.jpg') }}" width="1880" height="950" alt="" class="img-cover">
+              <img src="{{ asset('images/hero-slider-2.png') }}" width="1880" height="950" alt="" class="img-cover">
             </div>
 
-            <p class="label-2 section-subtitle slider-reveal">Pernikahan abadi, dirancang kreatif untuk momen tak terlupakan.</p>
+            <p class="label-2 section-subtitle slider-reveal">Pernikahan Abadi, dirancang kreatif untuk momen tak terlupakan.</p>
 
             <h1 class="display-1 hero-title slider-reveal">
               Crafting Timeless Unions
@@ -242,7 +247,7 @@
               Gather your loved ones and savor the magic <br> of our expertly crafted weddings.
             </p>
 
-            <a href="#" class="btn btn-primary slider-reveal">
+            <a href="#pricelist" class="btn btn-primary slider-reveal">
               <span class="text text-1">View Our Pricelist</span>
 
               <span class="text text-2" aria-hidden="true">View Our Pricelist</span>
@@ -253,7 +258,7 @@
           <li class="slider-item" data-hero-slider-item>
 
             <div class="slider-bg">
-              <img src="{{ asset('images/hero-slider-2.jpg') }}" width="1880" height="950" alt="" class="img-cover">
+              <img src="{{ asset('images/hero-slider-1.png') }}" width="1880" height="950" alt="" class="img-cover">
             </div>
 
             <p class="label-2 section-subtitle slider-reveal">Pernikahan berkelas, sesuai dengan keinginan Anda.</p>
@@ -266,7 +271,7 @@
               Gather your loved ones and savor the magic <br> of our expertly crafted weddings.
             </p>
 
-            <a href="#" class="btn btn-primary slider-reveal">
+            <a href="#pricelist" class="btn btn-primary slider-reveal">
               <span class="text text-1">View Our Pricelist</span>
 
               <span class="text text-2" aria-hidden="true">View Our Pricelist</span>
@@ -277,20 +282,20 @@
           <li class="slider-item" data-hero-slider-item>
 
             <div class="slider-bg">
-              <img src="{{ asset('images/hero-slider-3.jpg') }}" width="1880" height="950" alt="" class="img-cover">
+              <img src="{{ asset('images/hero-slider-3.png') }}" width="1880" height="950" alt="" class="img-cover">
             </div>
 
             <p class="label-2 section-subtitle slider-reveal">Pernikahan impianmu, siap diwujudkan.</p>
 
             <h1 class="display-1 hero-title slider-reveal">
-              Our Dream, Our Expertise
+              Your Dream, Our Expertise
             </h1>
 
             <p class="body-2 hero-text slider-reveal">
               Gather your loved ones and savor the magic <br> of our expertly crafted weddings.
             </p>
 
-            <a href="#" class="btn btn-primary slider-reveal">
+            <a href="#pricelist" class="btn btn-primary slider-reveal">
               <span class="text text-1">View Our Pricelist</span>
 
               <span class="text text-2" aria-hidden="true">View Our Pricelist</span>
@@ -446,11 +451,11 @@
 
           <figure class="about-banner">
 
-            <img src="{{ asset('images/about-banner.jpg') }}" width="570" height="570" loading="lazy" alt="about banner"
+            <img src="{{ asset('images/about-banner.png') }}" width="570" height="570" loading="lazy" alt="about banner"
               class="w-100" data-parallax-item data-parallax-speed="1">
 
             <div class="abs-img abs-img-1 has-before" data-parallax-item data-parallax-speed="1.75">
-              <img src="{{ asset('images/about-abs-image.jpg') }}" width="285" height="285" loading="lazy" alt=""
+              <img src="{{ asset('images/about-abs-image.png') }}" width="285" height="285" loading="lazy" alt=""
                 class="w-100">
             </div>
 
@@ -471,7 +476,7 @@
         - #SPECIAL PROMO
       -->
 
-      <section class="special-dish text-center" aria-labelledby="dish-label">
+      <section class="special-dish text-center" aria-labelledby="dish-label" id="promo">
 
         <div class="special-dish-banner">
           <img src="{{ asset('images/special-dish-banner.jpg') }}" width="940" height="900" loading="lazy" alt="special dish"
@@ -512,10 +517,10 @@
 
 
       <!-- 
-        - #MENU
+        - #PRICELIST
       -->
 
-      <section class="section menu" aria-label="menu-label" id="menu">
+      <section class="section menu" aria-label="menu-label" id="pricelist">
         <div class="container">
 
           <p class="section-subtitle text-center label-2">Special Selection</p>
@@ -714,7 +719,7 @@
       -->
 
       <section class="section testi text-center has-bg-image"
-        style="background-image: url('images/testimonial-bg.jpg')" aria-label="testimonials">
+        style="background-image: url('images/testimonial-bg.png')" aria-label="testimonials" id="testimoni">
         <div class="container">
 
           <div class="quote">”</div>
@@ -747,7 +752,7 @@
         - #RESERVATION
       -->
 
-      <section class="reservation">
+      <section class="reservation" id="reservation">
         <div class="container">
 
           <div class="form reservation-form bg-black-10">
@@ -762,7 +767,7 @@
               </p>
 
               <div class="input-wrapper">
-                <input type="text" name="name" placeholder="Your Name" autocomplete="off" class="input-field">
+                <input type="text" name="name" placeholder="Name of the Bride and Groom" autocomplete="off" class="input-field">
 
                 <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field">
               </div>
@@ -1048,7 +1053,7 @@
       <div class="content grid">
         <div class="box">
           <div class="img">
-            <img src="{{ asset('images/a1.jpg') }}" alt="">
+            <img src="{{ asset('images/about-abs-image.png') }}" alt="">
           </div>
           <div class="icon">
             <i class="fas fa-search-plus"></i>
@@ -1099,7 +1104,7 @@
 
     <!-- Footer -->
     <footer class="footer section has-bg-image text-center"
-    style="background-image: url('images/footer-bg.jpg')">
+    style="background-image: url('images/hero-slider-3.png')" id="contact">
     <div class="container">
 
       <div class="footer-top grid-list">
@@ -1142,11 +1147,15 @@
           </li>
 
           <li>
+            <a href="#" class="label-2 footer-link hover-underline">Promo</a>
+          </li>
+
+          <li>
             <a href="#" class="label-2 footer-link hover-underline">Tentang Kami</a>
           </li>
 
           <li>
-            <a href="#" class="label-2 footer-link hover-underline">Redaksi Kami</a>
+            <a href="#" class="label-2 footer-link hover-underline">Testimoni</a>
           </li>
 
           <li>
@@ -1157,21 +1166,11 @@
 
         <ul class="footer-list">
 
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Facebook</a>
-          </li>
-
+          
           <li>
             <a href="https://www.instagram.com/zaynwedding?igsh=MzRlODBiNWFlZA==" class="label-2 footer-link hover-underline">Instagram</a>
           </li>
 
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Twitter</a>
-          </li>
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Youtube</a>
-          </li>
 
           <li>
             <a href="https://maps.app.goo.gl/96HydhU1xU5TEzA7A" class="label-2 footer-link hover-underline">Google Map</a>

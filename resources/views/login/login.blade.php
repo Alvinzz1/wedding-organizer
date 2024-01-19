@@ -13,7 +13,7 @@
       <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">
-            <form action="index.html" autocomplete="off" class="sign-in-form">
+            <form action="#" autocomplete="off" class="login-form">
               <div class="logo">
                 <h4>Zayn Wedding</h4>
               </div>
@@ -56,7 +56,7 @@
               </div>
             </form>
 
-            <form action="index.html" autocomplete="off" class="sign-up-form">
+            <form action="#" autocomplete="off" class="register-form">
               <div class="logo">
                 <h4>Zayn Wedding</h4>
               </div>
@@ -113,17 +113,17 @@
 
           <div class="carousel">
             <div class="images-wrapper">
-              <img src="./img/image1.png" class="image img-1 show" alt="" />
-              <img src="./img/image2.png" class="image img-2" alt="" />
-              <img src="./img/image3.png" class="image img-3" alt="" />
+              <img src="{{ asset('images/1.png') }}" class="image img-1 show" alt="" />
+              <img src="{{ asset('images/2.png') }}" class="image img-2" alt="" />
+              <img src="{{ asset('images/3.png') }}" class="image img-3" alt="" />
             </div>
 
             <div class="text-slider">
               <div class="text-wrap">
                 <div class="text-group">
-                  <h2>Create your own courses</h2>
-                  <h2>Customize as you like</h2>
-                  <h2>Invite students to your class</h2>
+                  <h2>Hai admin</h2>
+                  <h2>Masuk, yuk!</h2>
+                  <h2>Gaskeeunn</h2>
                 </div>
               </div>
 

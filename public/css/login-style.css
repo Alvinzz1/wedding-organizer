@@ -17,7 +17,7 @@ main {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background-color: #ffc4c4;
+  background-image: url('../images/hero-slider-2.png');
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -68,7 +68,7 @@ form {
   transition: opacity 0.02s 0.4s;
 }
 
-form.sign-up-form {
+form.register-form {
   opacity: 0;
   pointer-events: none;
 }
@@ -187,12 +187,12 @@ label {
   color: #850E35;
 }
 
-main.sign-up-mode form.sign-in-form {
+main.sign-up-mode form.login-form {
   opacity: 0;
   pointer-events: none;
 }
 
-main.sign-up-mode form.sign-up-form {
+main.sign-up-mode form.register-form {
   opacity: 1;
   pointer-events: all;
 }
@@ -332,15 +332,15 @@ main.sign-up-mode .carousel {
     margin: 2rem 0;
   }
 
-  form.sign-up-form {
+  form.register-form {
     transform: translateX(100%);
   }
 
-  main.sign-up-mode form.sign-in-form {
+  main.sign-up-mode form.login-form {
     transform: translateX(-100%);
   }
 
-  main.sign-up-mode form.sign-up-form {
+  main.sign-up-mode form.register-form {
     transform: translateX(0%);
   }
 

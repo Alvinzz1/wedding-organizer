@@ -1,4 +1,4 @@
-@extends('index.layout')
+@extends('dashboard.layout')
 @section('content')
 
 <main>

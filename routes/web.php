@@ -20,7 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
-    return view('login.login');
+    return view('login.index');
 });
 
-Route::get('/index', [DashboardController::class, 'index'])->name('index');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
+Route::post('/dashboard', [DashboardController::class, 'authenticate'])->name('index');

@@ -13,7 +13,8 @@
       <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">
-            <form action="#" autocomplete="off" class="login-form">
+            <form action="#" method="POST" autocomplete="off" class="login-form">
+              @csrf
               <div class="logo">
                 <h4>Zayn Wedding</h4>
               </div>
@@ -22,7 +23,28 @@
                 <h2>Welcome Back</h2>
                 <h6>Not registred yet?</h6>
                 <a href="#" class="toggle">Register</a>
+                @if ($errors->any())
+
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $item)
+                    <li>{{ $item }}</li>
+                      
+                    @endforeach
+                  </ul>
+                </div>
+                
+              @endif
+              <form action="" method="POST"
+              @csrf
+
+              <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="name" value="{{ old('name') }}" name="name" class="form-control">
+
+                
               </div>
+              
 
               <div class="actual-form">
                 <div class="input-wrap">

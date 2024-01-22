@@ -101,6 +101,10 @@
             <span class="nav-link-text ms-1">Register</span>
           </a>
         </li>
+      
+			<form action="/logout" method="post" onclick="return confirm('Apakah Yakin Ingin Logout?')">
+				<a href="/" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Logout</a>
+			</form>
       </ul>
     </div>
   </aside>

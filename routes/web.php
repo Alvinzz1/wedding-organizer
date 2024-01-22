@@ -27,5 +27,6 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
-Route::post('/dashboard', [DashboardController::class, 'authenticate'])->name('index');
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -14,27 +15,36 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ], [
-            'email.required' => 'Email Wajib Diisi',
-            'password.required'=> 'Password Wajib Diisi',
-        
-      ]);
+      $credentials = $request->validate([
+        'email' => 'required|email:dns',
+        'password' => 'required'
+    ], [
+        'email.required' => 'Email Wajib Diisi',
+        'password.required' => 'Password Wajib Diisi'
+    ]);
 
-      $infologin = [
-        'email' => $request->email,
-        'password' => $request->password
-      ];
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->intended('/dashboard');
+    }
+    //  elseif (Auth::guard('user')->attempt($credentials)) {
+    // //     $request->session()->regenerate();
+    // //     return redirect()->intended('/dashboard');
+    // // }
 
-      if (Auth::attempt($infologin)) {
-        //messages sukses
-        return 'sukses';
-      } else {
-        //messages gagal\
-        return 'gagal';
-      }
+    return back()->with('loginError', 'Apakah email dan password sudah benar!!!');
+      
+      
+    }
 
+    public function logout()
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

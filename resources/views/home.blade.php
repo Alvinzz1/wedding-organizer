@@ -33,9 +33,9 @@
   <!-- 
     - preload images
   -->
-  <link rel="preload" as="image" href="{{ asset('images/hero-slider-1.jpg') }}">
-  <link rel="preload" as="image" href="{{ asset('images/hero-slider-2.jpg') }}">
-  <link rel="preload" as="image" href="{{ asset('images/hero-slider-3.jpg') }}">
+  <link rel="preload" as="image" href="{{ asset('images/hero-slider-1.png') }}">
+  <link rel="preload" as="image" href="{{ asset('images/hero-slider-2.png') }}">
+  <link rel="preload" as="image" href="{{ asset('images/hero-slider-3.png') }}">
 
 </head>
 

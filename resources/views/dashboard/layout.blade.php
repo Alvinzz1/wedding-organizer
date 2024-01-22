@@ -47,7 +47,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Paket Pricelist</span>
+            <span class="nav-link-text ms-1">Reservasi</span>
           </a>
         </li>
         <li class="nav-item">
@@ -55,15 +55,15 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Promo</span>
+            <span class="nav-link-text ms-1">Paket Pricelist</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link " href="../pages/virtual-reality.html">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-app text-info text-sm opacity-10"></i>
+              <i class="ni ni-tag text-info text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Testimoni</span>
+            <span class="nav-link-text ms-1">Promo</span>
           </a>
         </li>
         <li class="nav-item">
@@ -71,13 +71,21 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Events</span>
+            <span class="nav-link-text ms-1">Testimoni</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link " href="../pages/billing.html">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+              <i class="ni ni-spaceship text-success text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Events</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="../pages/virtual-reality.html">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-collection text-info text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Laporan</span>
           </a>
@@ -94,17 +102,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/sign-in.html">
+        <form action="/logout" method="post" onclick="return confirm('Apakah Yakin Ingin Logout?')">
+          <a class="nav-link " href="/">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
+              <i class="ni ni-bold-left text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Register</span>
+            <span class="nav-link-text ms-1">Logout</span>
           </a>
-        </li>
-      
-			<form action="/logout" method="post" onclick="return confirm('Apakah Yakin Ingin Logout?')">
-				<a href="/" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Logout</a>
-			</form>
+        </form>
+        </li>			
       </ul>
     </div>
   </aside>
@@ -128,9 +134,9 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+              <a href="/login" class="nav-link text-white font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+                <span class="d-sm-inline d-none">Login</span>
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">

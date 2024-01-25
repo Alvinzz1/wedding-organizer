@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -28,5 +29,14 @@ Route::get('/register', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+
+//login/register
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/logout', [LoginController::class, 'logout']);
+
+//kondisi masuk ke dashboard harus login
+Route::group(['middleware' => 'check.login'], function () {
+    // Route untuk halaman dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+});

@@ -66,31 +66,56 @@
             <div class="row px-xl-5 px-sm-4 px-3">
               <div class="position-relative text-center">
                 <p class="text-sm font-weight-bold mb-2 text-secondary text-border d-inline z-index-2 bg-white px-3">
-                  below
                 </p>
               </div>
             </div>
             <div class="card-body">
-              <form action="#" role="form">
+              @if($errors->any())
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                </div>
+              @endif
+            
+              <form action="/register" method="POST" role="form">
+                @csrf
                 <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Name" aria-label="Name">
+                  <input type="username" name="username" class="form-control form-control-lg @error('username') is-invalid 
+                    @enderror" id="username" placeholder="Input Your Username..." aria-label="username" autofocus value="{{ old('username') }}">
+                  @error('username')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
                 </div>
                 <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                  <input type="email" name="email" class="form-control form-control-lg @error('email') is-invalid 
+                     @enderror" id="email" placeholder="Input Your Email..." aria-label="Email" autofocus value="{{ old('email') }}">
+                  @error('email')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
                 </div>
                 <div class="mb-3">
-                  <input type="password" class="form-control" placeholder="Password" aria-label="Password">
+                  <input type="password" name="password" class="form-control form-control-lg @error('password') is-invalid
+                    @enderror" id="password" placeholder="Input Your Password..." aria-label="Password" autofocus value="{{ old('password') }}">
+                  @error('password')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Register</button>
+                  <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Register</button>
                 </div>
                 <p class="text-sm mt-3 mb-0">Already have an account? <a href="/login" class="text-dark font-weight-bolder">Login</a></p>
               </form>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            
   </main>
   <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
   <footer class="footer py-5">

@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class CheckLogin
+class isLogin
 {
     /**
      * Handle an incoming request.
@@ -16,10 +17,12 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next)
     {
-       if (auth()->check()) {
-        return $next($request);
-       }
+        if(Auth::check()) {
+            return $next($request);
+        }
+        \Log::debug('User not logged in. Redirecting to login page.');
 
-       return redirect('/login');
+
+        return redirect('/login')->withErrors('Silahkan login terlebih dahulu!!!');
     }
 }

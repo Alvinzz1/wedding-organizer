@@ -60,7 +60,11 @@
                   <p class="mb-0">Enter your email and password to login</p>
                 </div>
                 <div class="card-body">
-                  <form  action="/login" method="POST" role="form">
+                  <form  action="{{ url('/login') }}" method="POST" role="form">
+                    @csrf
+                    @if (Auth::check()) 
+                    @endif
+
 
                     <div class="mb-md-5 mt-md-4 pb-5">
                       @if(session()->has('succes')) 

@@ -3,9 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PromoController;
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PricelistController;
+use App\Http\Controllers\ReservasiController;
+use App\Http\Controllers\TestimoniController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,17 +32,21 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-//sistem dashboarad
-Route::get('/dashboard/pricelist', [PricelistController::class, 'index']);
-Route::get('/dashboard/reservasi', [PricelistController::class, 'index']);
-Route::get('/dashboard/promo', [PricelistController::class, 'index']);
-Route::get('/dashboard/testimoni', [PricelistController::class, 'index']);
-Route::get('/dashboard/events', [PricelistController::class, 'index']);
-Route::get('/dashboard/laporan', [PricelistController::class, 'index']);
 
+//sistem dashboarad
+Route::get('/pricelist', [PricelistController::class, 'index']);
+Route::get('/dashboard/reservasi', [ReservasiController::class, 'index']);
+Route::get('/dashboard/promo', [PromoController::class, 'index']);
+Route::get('/dashboard/testimoni', [TestimoniController::class, 'index']);
+Route::get('/dashboard/events', [EventsController::class, 'index']);
+Route::get('/dashboard/laporan', [LaporanController::class, 'index']);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dashboard', DashboardController::class);
+
+
+
+
     
 
 

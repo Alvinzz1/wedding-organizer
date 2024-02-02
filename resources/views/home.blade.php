@@ -751,85 +751,64 @@
       <!-- 
         - #RESERVATION
       -->
-
       <section class="reservation" id="reservation">
         <div class="container">
-
-          <div class="form reservation-form bg-black-10">
-
-            <form action="" class="form-left">
-
-              <h2 class="headline-1 text-center">Online Reservation</h2>
-
-              <p class="form-text text-center">
-                Booking request <a href="tel:+6281298889045" class="link">+62 812-9888-9045</a>
-                or fill out the list form below
-              </p>
-
-              <div class="input-wrapper">
-                <input type="text" name="name" placeholder="Name of the Bride and Groom" autocomplete="off" class="input-field">
-
-                <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field">
-              </div>
-
-              <div class="input-wrapper">
-
-                <div class="icon-wrapper">
-                  <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-
-                  <select name="person" class="input-field">
-                    <option value="1-person">1 Person</option>
-                    <option value="2-person">2 Person</option>
-                    <option value="3-person">3 Person</option>
-                    <option value="4-person">4 Person</option>
-                    <option value="5-person">5 Person</option>
-                    <option value="6-person">6 Person</option>
-                    <option value="7-person">7 Person</option>
-                    <option value="8-person">8 Person</option>
-                  </select>
-
-                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
-
-                <div class="icon-wrapper">
-                  <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
-
-                  <input type="date" name="reservation-date" class="input-field">
-
-                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
-
-                <div class="icon-wrapper">
-                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                  <select name="person" class="input-field">
-                    <option value="09:00am">09 : 00 am</option>
-                    <option value="010:00am">10 : 00 am</option>
-                    <option value="011:00am">11 : 00 am</option>
-                    <option value="012:00am">12 : 00 am</option>
-                    <option value="01:00pm">13 : 00 pm</option>
-                    <option value="02:00pm">14 : 00 pm</option>
-                    <option value="03:00pm">15 : 00 pm</option>
-                    <option value="04:00pm">16 : 00 pm</option>
-                    <option value="05:00pm">17 : 00 pm</option>
-                    <option value="06:00pm">18 : 00 pm</option>
-                  </select>
-
-                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
-
-              </div>
-
-              <textarea name="message" placeholder="Message" autocomplete="off" class="input-field"></textarea>
-
-              <button type="submit" class="btn btn-secondary">
-                <span class="text text-1">Book A Date</span>
-
-                <span class="text text-2" aria-hidden="true">Book A Date</span>
-              </button>
-
-            </form>
-
+            <div class="form reservation-form bg-black-10">
+                <form action="process_reservation.php" method="post" class="form-left">
+                    <!-- Tambahkan action dan method -->
+    
+                    <h2 class="headline-1 text-center">Online Reservation</h2>
+                    <p class="form-text text-center">
+                        Booking request <a href="tel:+6281298889045" class="link">+62 812-9888-9045</a> or fill out the list form below
+                    </p>
+    
+                    <div class="input-wrapper">
+                        <input type="text" name="name" placeholder="Name of the Bride and Groom" autocomplete="off" class="input-field">
+    
+                        <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field">
+                    </div>
+    
+                    <div class="input-wrapper">
+                        <div class="icon-wrapper">
+                            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+                            <select name="person" class="input-field">
+                                <!-- Tambahkan name pada select -->
+                                <option value="1-person">1 Person</option>
+                                <!-- ... (opsi lainnya) ... -->
+                            </select>
+                            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+                        </div>
+    
+                        <div class="icon-wrapper">
+                            <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
+                            <input type="date" name="reservation-date" class="input-field">
+                            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+                        </div>
+    
+                        <div class="icon-wrapper">
+                            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                            <select name="reservation-time" class="input-field">
+                                <!-- Tambahkan name pada select -->
+                                <option value="09:00am">09 : 00 am</option>
+                                <!-- ... (opsi lainnya) ... -->
+                            </select>
+                            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+                        </div>
+                    </div>
+    
+                    <textarea name="message" placeholder="Message" autocomplete="off" class="input-field"></textarea>
+    
+                    <button type="submit" class="btn btn-secondary">
+                        <span class="text text-1">Book A Date</span>
+                        <span class="text text-2" aria-hidden="true">Book A Date</span>
+                    </button>
+                </form>
+    
+                <!-- ... (bagian form-right tetap sama) ... -->
+            </div>
+        </div>
+    </section>
+    
             <div class="form-right text-center" style="background-image: url('images/form-pattern.png')">
 
               <h2 class="headline-1 text-center">Contact</h2>

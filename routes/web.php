@@ -23,7 +23,8 @@ use App\Http\Controllers\TestimoniController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
@@ -34,7 +35,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 
 //sistem dashboarad
-Route::get('/pricelist', [PricelistController::class, 'index']);
+Route::get('/dashboard/pricelist', [PricelistController::class, 'index']);
 Route::get('/dashboard/reservasi', [ReservasiController::class, 'index']);
 Route::get('/dashboard/promo', [PromoController::class, 'index']);
 Route::get('/dashboard/testimoni', [TestimoniController::class, 'index']);

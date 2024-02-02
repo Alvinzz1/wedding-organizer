@@ -11,4 +11,10 @@ class ReservasiController extends Controller
     {
         return view('reservasi.index');
     }
+
+
+    public function store()
+    {
+        
+    }
 }

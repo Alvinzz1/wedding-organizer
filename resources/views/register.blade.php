@@ -85,7 +85,11 @@
                 <div class="mb-3">
                   <input type="name" name="name" class="form-control form-control-lg @error('name') is-invalid 
                     @enderror" id="name" placeholder="Input Your name..." aria-label="name" autofocus value="{{ old('name') }}">
+<<<<<<< HEAD
                   @error('username')
+=======
+                  @error('name')
+>>>>>>> c84618d7de38b80b4c86081e0962ef048d2ee7f4
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>

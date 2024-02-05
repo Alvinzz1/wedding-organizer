@@ -23,7 +23,8 @@ use App\Http\Controllers\TestimoniController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
@@ -34,6 +35,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 
 //sistem dashboarad
+<<<<<<< HEAD
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/pricelist', [PricelistController::class, 'index'])->name('pricelist');
     Route::get('/create-pricelist', [PricelistController::class, 'create'])->name('create-pricelist');
@@ -46,6 +48,14 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
     Route::get('/testimoni', [TestimoniController::class, 'index']);
     Route::get('/events', [EventsController::class, 'index']);
     Route::get('/laporan', [LaporanController::class, 'index']);
+=======
+Route::get('/dashboard/pricelist', [PricelistController::class, 'index']);
+Route::get('/dashboard/reservasi', [ReservasiController::class, 'index']);
+Route::get('/dashboard/promo', [PromoController::class, 'index']);
+Route::get('/dashboard/testimoni', [TestimoniController::class, 'index']);
+Route::get('/dashboard/events', [EventsController::class, 'index']);
+Route::get('/dashboard/laporan', [LaporanController::class, 'index']);
+>>>>>>> c84618d7de38b80b4c86081e0962ef048d2ee7f4
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dashboard', DashboardController::class);

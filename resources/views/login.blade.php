@@ -28,7 +28,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4">
           <div class="container-fluid">
-            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../pages/dashboard.html">
+            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="{{ route('login') }}">
               Zayn Wedding
             </a>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,8 +62,8 @@
                 <div class="card-body">
                   <form  action="{{ url('/login') }}" method="POST" role="form">
                     @csrf
-                    @if (Auth::check()) 
-                    @endif
+                    {{-- @if (Auth::check()) 
+                    @endif --}}
 
 
                     <div class="mb-md-5 mt-md-4 pb-5">
@@ -90,10 +90,20 @@
                     @endif
                     @csrf
                     <div class="mb-3">
-                      <input type="email" name="email" id="email"  class="form-control form-control-lg" placeholder="Email" aria-label="Email" required>
+                      <input type="email" name="email" id="email"  class="form-control form-control-lg @error('email') is-invalid @enderror" autofocus value="{{ old('email') }}">
+                        @error('email')
+                        <div class="error-massage">
+                                {{ $message }}
+                        </div>   
+                        @enderror
                     </div>
                     <div class="mb-3">
-                      <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" required>
+                      <input type="password" name="password" id="password"  class="form-control form-control-lg @error('password') is-invalid @enderror" autofocus value="{{ old('password') }}">
+                        @error('password')
+                        <div class="error-massage">
+                                {{ $message }}
+                        </div>   
+                        @enderror
                     </div>
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" id="rememberMe">
@@ -120,6 +130,11 @@
                 <p class="text-white position-relative">The more effortless the writing looks, the more effort the writer actually put into the process.</p>
               </div>
             </div>
+            <style>
+              .error-massage {
+                color: red;
+              }
+            </style>
           </div>
         </div>
       </div>

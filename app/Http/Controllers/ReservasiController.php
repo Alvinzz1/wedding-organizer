@@ -17,6 +17,7 @@ class ReservasiController extends Controller
         return view('reservasi.index');
     }
 
+<<<<<<< HEAD
     /**
      * Show the form for creating a new resource.
      *
@@ -81,5 +82,11 @@ class ReservasiController extends Controller
     public function destroy($id)
     {
         //
+=======
+
+    public function store()
+    {
+        
+>>>>>>> c84618d7de38b80b4c86081e0962ef048d2ee7f4
     }
 }

@@ -18,13 +18,23 @@ class LoginController extends Controller
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
+<<<<<<< HEAD
         ],
          [
+=======
+        ], 
+        [
+>>>>>>> c84618d7de38b80b4c86081e0962ef048d2ee7f4
             'email.required' => 'Email Wajib Diisi',
+            'email.required' => 'Format Email Tidak Valid',
             'password.required' => 'Password Wajib Diisi'
             
         ]);
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> c84618d7de38b80b4c86081e0962ef048d2ee7f4
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/dashboard');

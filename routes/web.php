@@ -34,12 +34,18 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 
 //sistem dashboarad
-Route::get('/pricelist', [PricelistController::class, 'index']);
-Route::get('/dashboard/reservasi', [ReservasiController::class, 'index']);
-Route::get('/dashboard/promo', [PromoController::class, 'index']);
-Route::get('/dashboard/testimoni', [TestimoniController::class, 'index']);
-Route::get('/dashboard/events', [EventsController::class, 'index']);
-Route::get('/dashboard/laporan', [LaporanController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/pricelist', [PricelistController::class, 'index'])->name('pricelist');
+    Route::get('/create-pricelist', [PricelistController::class, 'create'])->name('create-pricelist');
+    Route::post('/submit-pricelist', [PricelistController::class, 'store'])->name('submit-pricelist');
+    Route::get('/edit-pricelist/{id}', [PricelistController::class, 'edit'])->name('edit-pricelist');
+    Route::post('/update-pricelist/{id}', [PricelistController::class, 'update'])->name('update-pricelist');
+    Route::get('/delete-pricelist/{id}', [PricelistController::class, 'destroy'])->name('delete-pricelist');
+    Route::get('/reservasi', [ReservasiController::class, 'index']);
+    Route::get('/promo', [PromoController::class, 'index']);
+    Route::get('/testimoni', [TestimoniController::class, 'index']);
+    Route::get('/events', [EventsController::class, 'index']);
+    Route::get('/laporan', [LaporanController::class, 'index']);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dashboard', DashboardController::class);

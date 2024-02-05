@@ -83,8 +83,8 @@
               <form action="/register" method="POST" role="form">
                 @csrf
                 <div class="mb-3">
-                  <input type="username" name="username" class="form-control form-control-lg @error('username') is-invalid 
-                    @enderror" id="username" placeholder="Input Your Username..." aria-label="username" autofocus value="{{ old('username') }}">
+                  <input type="name" name="name" class="form-control form-control-lg @error('name') is-invalid 
+                    @enderror" id="name" placeholder="Input Your name..." aria-label="name" autofocus value="{{ old('name') }}">
                   @error('username')
                     <div class="invalid-feedback">
                       {{ $message }}

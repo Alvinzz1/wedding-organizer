@@ -184,7 +184,7 @@
             Jakarta Barat, DKI Jakarta 11840
           </address>
 
-          <p class="body-4 navbar-text">Open: 10.00 am - 19.00 pm</p>
+          <p class="body-4 navbar-text">Open: 09.00 am - 18.00 pm</p>
 
           <a href="mailto:zaynwedding@gmail.com" class="body-4 sidebar-link">zaynwedding@gmail.com</a>
 
@@ -348,7 +348,7 @@
 
                 <a href="#" class="has-before hover:shine">
                   <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="{{ asset('images/service-1.jpg') }}" width="285" height="336" loading="lazy" alt="Dekorasi"
+                    <img src="{{ asset('images/1.png') }}" width="285" height="336" loading="lazy" alt="Dekorasi"
                       class="img-cover">
                   </figure>
                 </a>
@@ -369,7 +369,7 @@
 
                 <a href="#" class="has-before hover:shine">
                   <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="{{ asset('images/service-2.jpg') }}" width="285" height="336" loading="lazy" alt="Foto&Video"
+                    <img src="{{ asset('images/foto-video.jpg') }}" width="285" height="336" loading="lazy" alt="Foto&Video"
                       class="img-cover">
                   </figure>
                 </a>
@@ -390,7 +390,7 @@
 
                 <a href="#" class="has-before hover:shine">
                   <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="{{ asset('images/service-3.jpg') }}" width="285" height="336" loading="lazy" alt="Makeup"
+                    <img src="{{ asset('images/makeup.jpg') }}" width="285" height="336" loading="lazy" alt="Makeup"
                       class="img-cover">
                   </figure>
                 </a>
@@ -739,6 +739,7 @@
               class="img">
 
             <p class="label-2 profile-name">Doer & Danielle</p>
+            <p class="label-2 profile-name">tanggal</p>
           </div>
 
         </div>

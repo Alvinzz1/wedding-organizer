@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Events;
 
 class EventsController extends Controller
 {
@@ -14,7 +15,8 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view('events.index');
+        $dtEvents = Events::paginate(3);
+        return view('events.events',compact('dtEvents'));
     }
 
     /**
@@ -24,7 +26,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        //
+        return view('events.create-events');
     }
 
     /**
@@ -35,7 +37,24 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'tanggal_events' => 'required|date',
+            'nama_pasangan' => 'required|string',
+            'lokasi' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan tipe file gambar yang diterima dan batasan ukuran
+        ]);
+    
+        $imagePath = $request->file('image')->store('pricelist_images', 'public');
+    
+        Events::create([
+            'tanggal_events' => $request->tanggal_events,
+            'nama_pasangan' => $request->nama_pasangan,
+            'lokasi' => $request->lokasi,
+            'image' => $imagePath,
+        ]);
+    
+        return redirect('events')->withToastSuccess('Data Berhasil Ditambahkan !');
     }
 
     /**
@@ -57,7 +76,8 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $events = Events::findorfail($id);
+        return view('events.edit-events',compact('events'));
     }
 
     /**
@@ -69,7 +89,23 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'tanggal_events' => 'required|date',
+            'nama_pasangan' => 'required|string',
+            'lokasi' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Optional validation for the image
+        ]);
+
+        $events = Events::findorfail($id);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('pricelist_images', 'public');
+            $events->image = $imagePath;
+        }
+        
+        $events->update($request->except('image'));
+
+        return redirect('events')->withToastSuccess('Data Berhasil Diupdate !');
     }
 
     /**
@@ -80,7 +116,11 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $events = Events::findorfail($id);
+        $events->delete();
+
+        return back()->with('info','Data Berhasil Dihapus !');
     }
 }
+
 

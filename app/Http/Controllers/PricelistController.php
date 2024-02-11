@@ -15,7 +15,7 @@ class PricelistController extends Controller
      */
     public function index()
     {
-        $dtPricelist = Pricelist::paginate(3);
+        $dtPricelist = Pricelist::paginate(6);
         return view('pricelist.pricelist',compact('dtPricelist'));
     }
 
@@ -41,7 +41,7 @@ class PricelistController extends Controller
         $request->validate([
             'nama_pricelist' => 'required|string',
             'harga' => 'required|numeric',
-            'detail_pricelist' => 'required|string',
+            'bonus_pricelist' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan tipe file gambar yang diterima dan batasan ukuran
         ]);
     
@@ -50,7 +50,7 @@ class PricelistController extends Controller
         Pricelist::create([
             'nama_pricelist' => $request->nama_pricelist,
             'harga' => $request->harga,
-            'detail_pricelist' => $request->detail_pricelist,
+            'bonus_pricelist' => $request->bonus_pricelist,
             'image' => $imagePath,
         ]);
     
@@ -89,8 +89,21 @@ class PricelistController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nama_pricelist' => 'required|string',
+            'harga' => 'required|numeric',
+            'bonus_pricelist' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Optional validation for the image
+        ]);
+
         $price = Pricelist::findorfail($id);
-        $price->update($request->all());
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('pricelist_images', 'public');
+            $price->image = $imagePath;
+        }
+        
+        $price->update($request->except('image'));
 
         return redirect('pricelist')->withToastSuccess('Data Berhasil Diupdate !');
     }

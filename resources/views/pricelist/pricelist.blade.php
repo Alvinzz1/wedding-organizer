@@ -136,7 +136,7 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Images</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Paket</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga Paket</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Detail</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bonus</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                     </tr>
                   </thead>
@@ -146,10 +146,24 @@
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
                       </td>
-                      <td style="text-align: center; vertical-align: middle;">
-                        <div class="d-flex px-2 py-1 flex-column justify-content-center">
-                            <img src="/storage/{{ $item->image }}" class="avatar avatar-sm me-3" alt="user1">
-                        </div>
+                      <td class="align-middle text-center">
+                          <div class="d-flex flex-column justify-content-center align-items-center" style="padding-top: 10px; padding-bottom: 10px;">
+                          <img src="/storage/{{ $item->image }}" style="width: 100px; height: 120px; border-radius: 10px; object-fit: cover; object-position: center; cursor: pointer;" onclick="showImageModal('{{ $item->image }}')">
+                          </div>
+                          <script>
+                            function showImageModal(imageUrl) {
+                              Swal.fire({
+                                title: '',
+                                html: `<div style="padding: 25px;">
+                                            <img src="/storage/${imageUrl}" style="max-width: 100%; height: auto; border-radius: 10px;">
+                                        </div>`,
+                                showCloseButton: true,
+                                showCancelButton: false,
+                                focusConfirm: false,
+                                confirmButtonText: 'Close',
+                            });
+                            }
+                        </script>
                       </td>
                       <td class="align-middle text-center">
                         <div class="d-flex flex-column justify-content-center">
@@ -157,10 +171,10 @@
                           </div>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-xs font-weight-bold">{{ $item->harga }}</span>
+                        <span class="text-xs font-weight-bold">Rp. {{ $item->harga }}-,</span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{ $item->detail_pricelist }}</span>
+                        <span class="text-secondary text-xs font-weight-bold">{{ $item->bonus_pricelist }}</span>
                       </td>
                       <td class="align-middle text-center">
                         <a href="{{ route('delete-pricelist', $item->id) }}" class="btn btn-link text-xs text-danger text-gradient px-3 mb-0"><i class="far fa-trash-alt me-2"></i>Delete</a>
@@ -171,11 +185,11 @@
                   @endforeach
                 </table>
               </div>
-              <div class="flex justify-center mt-3">
+            </div>
+            <div class="flex justify-center mt-2 mb-3">
                 <nav aria-label="Page navigation">
                     {{ $dtPricelist->links() }}
                 </nav>
-            </div>
             </div>
           </div>
         </div>

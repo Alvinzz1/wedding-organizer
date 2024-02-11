@@ -141,15 +141,15 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Detail Paket</label>
-                                            <textarea class="form-control" name="detail_pricelist" type="text" placeholder="Masukan Detail Paket">{{ $price->detail_pricelist }}</textarea>
+                                            <label for="example-text-input" class="form-control-label">Bonus Paket</label>
+                                            <textarea class="form-control" name="bonus_pricelist" type="text" placeholder="Masukan Bonus Paket">{{ $price->bonus_pricelist }}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Gambar Paket</label>
                                             <input class="form-control" type="file" id="gambarPaket" name="image" onchange="previewImage()">
-                                            <img class="mt-3" id="gambarPreview" src="https://via.placeholder.com/150" alt="Preview" style="max-width: 100%; height: auto; display: none;" value="{{ $price->image }}">
+                                            <img class="mt-3" id="gambarPreview" src="{{ $price->image ? asset('storage/' . $price->image) : 'https://via.placeholder.com/150' }}" alt="Preview" style="max-width: 100%; height: auto; display: {{ $price->image ? 'block' : 'none' }};">
                                         </div>
                                     </div>
                                     <div class="col-md-12">

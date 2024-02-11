@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('reservasis', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('telp')->unique();
+            $table->integer('person');
+            $table->date('reservation_date');
+            $table->string('reservation_time');
+            $table->text('message')->nullable();
             $table->timestamps();
         });
     }

@@ -48,14 +48,14 @@
       </div>
     </div>
   </div>
-  <main class="main-content  mt-5">
+  <main class="main-content ">
     <section>
       <div class="page-header min-vh-100">
         <div class="container">
           <div class="row">
             <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
               <div class="card card-plain">
-                <div class="card-header pb-0 text-start">
+                <div class="card-header pb-0 text-start mt-8">
                   <h4 class="font-weight-bolder">Login</h4>
                   <p class="mb-0">Enter your email and password to login</p>
                 </div>
@@ -115,7 +115,7 @@
                   </form>
                 </div>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                  <p class="mb-4 text-sm mx-auto">
+                  <p class="mb-2 text-sm mx-auto">
                     Don't have an account?
                     <a href="/register" class="text-primary text-gradient font-weight-bold">Register</a>
                   </p>

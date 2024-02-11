@@ -10,7 +10,7 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
             <li class="breadcrumb-item text-sm text-white active" aria-current="page">Events</li>
           </ol>
-          <h6 class="font-weight-bolder text-white mb-0">Events</h6>
+          <h6 class="font-weight-bolder text-white mb-0">Update Events</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -117,67 +117,69 @@
         </div>
       </div>
     </nav>
-<div class="container-fluid py-4">
-<div class="row">
-        <div class="col-12">
-          <div class="card mb-4">
-            <div class="card-header pb-0">
-            <div class="d-flex align-items-center">
-              <h6>Upcoming Events table</h6>
-              <button class="btn btn-primary btn-sm ms-auto" href="javascript:;">Tambah</button>
-            </div>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
-              <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Images</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Author</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1 flex-column justify-content-center">
-                          <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                          </div>
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <div class="card-body">
+                            <h6>Update Data Upcoming Events</h6>
+                            <form action="{{ url('update-events', $events->id) }}" method="post" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="row mt-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Nama Pasangan</label>
+                                            <input class="form-control" type="text" name="nama_pasangan" placeholder="Masukan Nama Pasangan" value="{{ $events->nama_pasangan }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Tanggal Events</label>
+                                            <input class="form-control" type="date" name="tanggal_events" placeholder="Masukan Tanggal Events" value="{{ $events->tanggal_events }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Lokasi</label>
+                                            <textarea class="form-control" name="lokasi" type="text" placeholder="Masukan Lokasi Tempat">{{ $events->lokasi }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Gambar Pasangan</label>
+                                            <input class="form-control" type="file" id="gambarPaket" name="image" onchange="previewImage()">
+                                            <img class="mt-3" id="gambarPreview" src="{{ $events->image ? asset('storage/' . $events->image) : 'https://via.placeholder.com/150' }}" alt="Preview" style="max-width: 100%; height: auto; display: {{ $events->image ? 'block' : 'none' }};">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-sm ms-auto mt-4">Ubah Data</button>
+                                        <a href="{{ route('events') }}" class="btn btn-primary btn-sm ms-auto mt-4" style="margin-right: 5px;">Back</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                      </td>
-                      <td>
-                        <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-xs font-weight-bold">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                          </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Organization</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <a class="btn btn-link text-xs text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                        <a class="btn btn-link text-xs text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-</div>
+    </div>
 
+<script>
+  function previewImage() {
+    var input = document.getElementById('gambarPaket');
+    var preview = document.getElementById('gambarPreview');
+    preview.style.display = "block";
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      preview.src = e.target.result;
+    };
+    
+    reader.readAsDataURL(input.files[0]);
+  }
+</script>
 
 @endsection

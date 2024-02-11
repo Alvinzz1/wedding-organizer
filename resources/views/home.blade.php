@@ -75,7 +75,7 @@
           <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
         </div>
 
-        <span class="span">Daily, except Tues : 10.00 am to 19.00 pm</span>
+        <span class="span">Daily, except Tues : 09.00 am to 18.00 pm</span>
       </div>
 
       <a href="tel:+6281298889045" class="topbar-item link">
@@ -203,6 +203,12 @@
         <span class="text text-1">Find A Date</span>
 
         <span class="text text-2" aria-hidden="true">Find A Date</span>
+      </a>
+
+      <a href="/login" class="btn btn-secondary">
+        <span class="text text-1">Login</span>
+
+        <span class="text text-2" aria-hidden="true">Login</span>
       </a>
 
       <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
@@ -348,7 +354,7 @@
 
                 <a href="#" class="has-before hover:shine">
                   <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="{{ asset('images/1.png') }}" width="285" height="336" loading="lazy" alt="Dekorasi"
+                    <img src="{{ asset('images/dekorasi.jpg') }}" width="285" height="336" loading="lazy" alt="Dekorasi"
                       class="img-cover">
                   </figure>
                 </a>
@@ -475,11 +481,11 @@
       <!-- 
         - #SPECIAL PROMO
       -->
-
+      @foreach ( $promo as $item )
       <section class="special-dish text-center" aria-labelledby="dish-label" id="promo">
-
+      
         <div class="special-dish-banner">
-          <img src="{{ asset('images/special-dish-banner.jpg') }}" width="940" height="900" loading="lazy" alt="special dish"
+          <img src="/storage/{{ $item->image }}" width="940" height="900" loading="lazy" alt="special dish"
             class="img-cover">
         </div>
 
@@ -490,16 +496,16 @@
 
             <p class="section-subtitle label-2">Special Promo</p>
 
-            <h2 class="headline-1 section-title">Nama Promo</h2>
+            <h2 class="headline-1 section-title">{{ $item->nama_promo }}</h2>
 
             <p class="section-text">
-              Detail Promo
+              {{ $item->bonus_promo }}
             </p>
 
             <div class="wrapper">
-              <del class="del body-3">Rp. Harga Awal</del>
+              <del class="del body-3">Rp. {{ $item->harga_awal }}-,</del>
 
-              <span class="span body-1">Rp. Harga Promo</span>
+              <span class="span body-1">Rp. {{ $item->harga }}-,</span>
             </div>
 
             <a href="#" class="btn btn-primary">
@@ -510,7 +516,9 @@
 
           </div>
         </div>
+        
       </section>
+      @endforeach
 
 
 
@@ -528,173 +536,36 @@
           <h2 class="headline-1 section-title text-center">The Best Pricelist</h2>
 
           <ul class="grid-list">
-
+          @foreach ( $price as $item )
             <li>
               <div class="menu-card hover:card">
 
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="{{ asset('images/pricelist-1.png') }}" width="100" height="100" loading="lazy" alt="Poster PL"
-                    class="img-cover">
+                <figure class="card-banner img-holder" style="--width: 200; --height: 200;">
+                <img src="/storage/{{ $item->image }}" 
+                  loading="lazy" 
+                  alt="Poster PL"
+                  class="img-cover"
+                  style="object-fit: cover; width: 200px; height: 200px;">
                 </figure>
 
                 <div>
 
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Nama Pricelist</a>
+                <div class="title-wrapper" style="display: flex;">
+                    <h3 class="title-3" style="margin-right: auto;">
+                        <a href="#" class="card-title">{{ $item->nama_pricelist }}</a>
                     </h3>
-
-                    <span class="badge label-1">Best Seller</span>
-
-                    <span class="span title-2">Rp. Harga</span>
-                  </div>
+                    <span class="span title-2" style="margin-left: auto;">Rp. {{ $item->harga }}-,</span>
+                </div>
 
                   <p class="card-text label-1">
-                    Detail Pricelist
+                    {{ $item->bonus_pricelist }}
                   </p>
 
                 </div>
 
               </div>
             </li>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="{{ asset('images/pricelist-2.png') }}" width="100" height="100" loading="lazy" alt="Poster PL"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Nama Pricelist</a>
-                    </h3>
-
-                    <span class="span title-2">Rp. Harga</span>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Detail Pricelist
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="{{ asset('images/pricelist-3.png') }}" width="100" height="100" loading="lazy" alt="Poster PL"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Nama Pricelist</a>
-                    </h3>
-
-                    <span class="span title-2">Rp. Pricelist</span>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Detail Pricelist
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="{{ asset('images/pricelist-4.png') }}" width="100" height="100" loading="lazy" alt="Poster PL"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Nama Pricelist</a>
-                    </h3>
-
-                    <span class="badge label-1">New</span>
-
-                    <span class="span title-2">Rp. Pricelist</span>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Detail Pricelist
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="{{ asset('images/pricelist-5.png') }}" width="100" height="100" loading="lazy" alt="Postr PL"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Nama Pricelist</a>
-                    </h3>
-
-                    <span class="span title-2">Rp. Pricelist</span>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Detail Pricelist
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="{{ asset('images/pricelist-6.png') }}" width="100" height="100" loading="lazy" alt="Poster PL"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Nama Pricelist</a>
-                    </h3>
-
-                    <span class="span title-2">Rp. Pricelist</span>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Detail Pricelist
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-
+          @endforeach
           </ul>
 
           <p class="menu-text text-center">
@@ -717,34 +588,42 @@
       <!-- 
         - #TESTIMONIALS
       -->
-
-      <section class="section testi text-center has-bg-image"
-        style="background-image: url('images/testimonial-bg.png')" aria-label="testimonials" id="testimoni">
+      <section class="section event text-center has-bg-image"
+      style="background-image:url('images/testimonial-bg.png')" aria-label="event" id="testimoni">
         <div class="container">
 
-          <div class="quote">”</div>
+          <p class="section-subtitle label-2 text-center"></p>
 
-          <p class="headline-2 testi-text">
-            Kalimat Testimonial
-          </p>
+          <h2 class="section-title headline-1 text-center">Testimoni</h2>
 
-          <div class="wrapper">
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
-          </div>
+          <ul class="grid-list">
+          @foreach ( $testi as $item )
+            <li>
+              <div class="event-card has-before hover:shine">
 
-          <div class="profile">
-            <img src="{{ asset('images/testi-avatar.jpg') }}" width="100" height="100" loading="lazy" alt="testi"
-              class="img">
+                <div class="card-banner img-holder" style="object-fit: cover; --width: 350; --height: 450; border-radius: 15px;">
+                    <video width="100%" height="100%" style="object-fit: cover;" controls>
+                        <source src="/storage/{{ $item->video }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <time class="publish-date label-2" datetime="tanggal">{{date('d-m-Y', strtotime($item->tanggal_events)) }}</time>
+                </div>
 
-            <p class="label-2 profile-name">Doer & Danielle</p>
-            <p class="label-2 profile-name">tanggal</p>
-          </div>
+                <div class="card-content" style="border-radius: 15px;">
+                  <p class="card-subtitle label-2 text-center">{{ $item->nama_pasangan }}</p>
+
+                  <h3 class="card-title title-2 text-center">
+                  {{ $item->lokasi }}
+                  </h3>
+                </div>
+
+              </div>
+            </li>
+          @endforeach
+          </ul>
 
         </div>
       </section>
-
 
 
 
@@ -755,18 +634,16 @@
       <section class="reservation" id="reservation">
         <div class="container">
             <div class="form reservation-form bg-black-10">
-                <form action="process_reservation.php" method="post" class="form-left">
-                    <!-- Tambahkan action dan method -->
-    
+            <form action="{{ route('submit-reservasi') }}" method="post" class="form-left" enctype="multipart/form-data">
+                  {{ csrf_field() }}
                     <h2 class="headline-1 text-center">Online Reservation</h2>
                     <p class="form-text text-center">
                         Booking request <a href="tel:+6281298889045" class="link">+62 812-9888-9045</a> or fill out the list form below
                     </p>
-    
-                    <div class="input-wrapper">
-                        <input type="text" name="name" placeholder="Name of the Bride and Groom" autocomplete="off" class="input-field">
-    
-                        <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field">
+                   
+                    <div style="display: flex; gap: 10px">
+                        <input type="text" name="name" placeholder="Name of the Bride and Groom" autocomplete="off" class="input-field" style="margin-right: 10px;">
+                        <input type="telp" name="telp" placeholder="Nomor WhatsApp" autocomplete="off" class="input-field">
                     </div>
     
                     <div class="input-wrapper">
@@ -774,28 +651,41 @@
                             <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
                             <select name="person" class="input-field">
                                 <!-- Tambahkan name pada select -->
-                                <option value="1-person">1 Person</option>
-                                <!-- ... (opsi lainnya) ... -->
+                                <option value="1">1 Person</option>
+                                <option value="2">2 Person</option>
+                                <option value="3">3 Person</option>
+                                <option value="4">4 Person</option>
+                                <option value="5">5 Person</option>
                             </select>
                             <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
                         </div>
     
                         <div class="icon-wrapper">
                             <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
-                            <input type="date" name="reservation-date" class="input-field">
+                            <input type="date" name="reservation_date" class="input-field">
                             <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
                         </div>
-    
-                        <div class="icon-wrapper">
+                    </div>
+                    <div style="display: flex;">
+                        <div class="icon-wrapper" style="flex-grow: 1;">
                             <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-                            <select name="reservation-time" class="input-field">
+                            <select name="reservation_time" class="input-field"style="flex-grow: 1;">
                                 <!-- Tambahkan name pada select -->
-                                <option value="09:00am">09 : 00 am</option>
+                                <option value="09:00">09 : 00 am</option>
+                                <option value="10:00">10 : 00 am</option>
+                                <option value="11:00">11 : 00 am</option>
+                                <option value="12:00">12 : 00 am</option>
+                                <option value="13:00">13 : 00 am</option>
+                                <option value="14:00">14 : 00 am</option>
+                                <option value="15:00">15 : 00 am</option>
+                                <option value="16:00">16 : 00 am</option>
+                                <option value="17:00">17 : 00 am</option>
+                                <option value="18:00">18 : 00 am</option>
                                 <!-- ... (opsi lainnya) ... -->
                             </select>
                             <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
                         </div>
-                    </div>
+                      </div>
     
                     <textarea name="message" placeholder="Message" autocomplete="off" class="input-field"></textarea>
     
@@ -805,12 +695,7 @@
                     </button>
                 </form>
     
-                <!-- ... (bagian form-right tetap sama) ... -->
-            </div>
-        </div>
-    </section>
-    
-            <div class="form-right text-center" style="background-image: url('images/form-pattern.png')">
+                <div class="form-right text-center" style="background-image: url('images/form-pattern.png')">
 
               <h2 class="headline-1 text-center">Contact</h2>
 
@@ -842,12 +727,9 @@
               </p>
 
             </div>
-
-          </div>
-
+            </div>
         </div>
-      </section>
-
+    </section>
 
 
 
@@ -946,70 +828,28 @@
           <h2 class="section-title headline-1 text-center">Upcoming Events</h2>
 
           <ul class="grid-list">
-
+          @foreach ( $events as $item )
             <li>
               <div class="event-card has-before hover:shine">
 
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="{{ asset('') }}" width="350" height="450" loading="lazy"
+                <div class="card-banner img-holder" style="object-fit: cover; --width: 350; --height: 450;">
+                  <img src="/storage/{{ $item->image }}" width="350" height="450" loading="lazy"
                     alt="gambar pernikahan" class="img-cover">
 
-                  <time class="publish-date label-2" datetime="tanggal">Tanggal Event</time>
+                  <time class="publish-date label-2" datetime="tanggal">{{date('d-m-Y', strtotime($item->tanggal_events)) }}</time>
                 </div>
 
                 <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Nama Groom dan Bride</p>
+                  <p class="card-subtitle label-2 text-center">{{ $item->nama_pasangan }}</p>
 
                   <h3 class="card-title title-2 text-center">
-                    Lokasi Pernikahan
+                  {{ $item->lokasi }}
                   </h3>
                 </div>
 
               </div>
             </li>
-
-            <li>
-              <div class="event-card has-before hover:shine">
-
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="{{ asset('') }}" width="350" height="450" loading="lazy"
-                    alt="gambar pernikahan" class="img-cover">
-
-                  <time class="publish-date label-2" datetime="tanggal">Tanggal Event</time>
-                </div>
-
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Nama Groom dan Bride</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Lokasi Pernikahan
-                  </h3>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="event-card has-before hover:shine">
-
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="{{ asset('') }}" width="350" height="450" loading="lazy"
-                    alt="gambar pernikahan" class="img-cover">
-
-                  <time class="publish-date label-2" datetime="tanggal">Tanggal Event</time>
-                </div>
-
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Nama Groom dan Bride</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Lokasi Pernikahan
-                  </h3>
-                </div>
-
-              </div>
-            </li>
-
+          @endforeach
           </ul>
 
           <a href="#" class="btn btn-primary">
@@ -1033,6 +873,38 @@
       <div class="content grid">
         <div class="box">
           <div class="img">
+            <img src="{{ asset('images/2.png') }}" alt="">
+          </div>
+          <div class="icon">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="box">
+        <div class="img" style="object-fit: cover;">
+            <img src="{{ asset('images/1.png') }}" alt="">
+        </div>
+          <div class="icon">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="box">
+          <div class="img">
+            <img src="{{ asset('images/about-banner.png') }}" alt="">
+          </div>
+          <div class="icon">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="box">
+          <div class="img">
+            <img src="{{ asset('images/4.png') }}" alt="">
+          </div>
+          <div class="icon">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="box">
+          <div class="img">
             <img src="{{ asset('images/about-abs-image.png') }}" alt="">
           </div>
           <div class="icon">
@@ -1041,39 +913,7 @@
         </div>
         <div class="box">
           <div class="img">
-            <img src="{{ asset('images/a2.jpg') }}" alt="">
-          </div>
-          <div class="icon">
-            <i class="fas fa-search-plus"></i>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img">
-            <img src="{{ asset('images/a3.jpg') }}" alt="">
-          </div>
-          <div class="icon">
-            <i class="fas fa-search-plus"></i>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img">
-            <img src="{{ asset('images/a4.jpg') }}" alt="">
-          </div>
-          <div class="icon">
-            <i class="fas fa-search-plus"></i>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img">
-            <img src="{{ asset('images/a5.jpg') }}" alt="">
-          </div>
-          <div class="icon">
-            <i class="fas fa-search-plus"></i>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img">
-            <img src="{{ asset('images/a6.jpg') }}" alt="">
+            <img src="{{ asset('images/3.png') }}" alt="">
           </div>
           <div class="icon">
             <i class="fas fa-search-plus"></i>
@@ -1200,7 +1040,7 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+  @include('sweetalert::alert')
 </body>
 
 </html>

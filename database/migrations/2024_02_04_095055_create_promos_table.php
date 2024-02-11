@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('promos', function (Blueprint $table) {
             $table->id();
             $table->string('nama_promo', 100);
-            $table->decimal('harga', 10, 2);
-            $table->text('detail_promo')->nullable();
+            $table->decimal('harga_awal');
+            $table->decimal('harga');
+            $table->text('bonus_promo')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

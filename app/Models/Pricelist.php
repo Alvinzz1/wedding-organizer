@@ -10,5 +10,5 @@ class Pricelist extends Model
     protected $table = "pricelists";
     protected $primaryKey = "id";
     protected $fillable = [
-        'id', 'nama_pricelist', 'harga', 'detail_pricelist', 'image'];
+        'id', 'nama_pricelist', 'harga', 'bonus_pricelist', 'image'];
 }

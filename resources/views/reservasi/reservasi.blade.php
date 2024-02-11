@@ -8,9 +8,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Pricelist</li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Reservasi</li>
           </ol>
-          <h6 class="font-weight-bolder text-white mb-0">Tambah Pricelist</h6>
+          <h6 class="font-weight-bolder text-white mb-0">Reservasi</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -117,69 +117,70 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-12">
-                <div class="card mb-4">
-                    <div class="card-header pb-0">
-                        <div class="card-body">
-                            <h6>Tambah Data Pricelist</h6>
-                            <form action="{{ route('submit-pricelist') }}" method="post" enctype="multipart/form-data">
-                                {{ csrf_field() }}
-                                <div class="row mt-4">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Nama Paket</label>
-                                            <input class="form-control" type="text" name="nama_pricelist" placeholder="Masukan Nama Paket">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Harga Paket</label>
-                                            <input class="form-control" type="number" name="harga" placeholder="Masukan Harga Paket">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Bonus Paket</label>
-                                            <textarea class="form-control" name="bonus_pricelist" type="text" placeholder="Masukan Bonus Paket"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Gambar Paket</label>
-                                            <input class="form-control" type="file" id="gambarPaket" name="image" onchange="previewImage()">
-                                            <img class="mt-3" id="gambarPreview" src="https://via.placeholder.com/150" alt="Preview" style="max-width: 100%; height: auto; display: none;">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-sm ms-auto mt-4">Submit</button>
-                                        <a href="{{ route('pricelist') }}" class="btn btn-primary btn-sm ms-auto mt-4" style="margin-right: 5px;">Back</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+<div class="container-fluid py-4">
+<div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+          <div class="card-header pb-0 d-flex justify-content-between">
+              <h6>Reservasi table</h6>
+          </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                    <tr>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 p-2">Nama Pasangan</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 p-2">Telepon</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 p-2">Status</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jumlah Person</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Waktu</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                    </tr>
+                  </thead>
+                  @foreach ($dtReservasi as $item)
+                  <tbody>
+                    <tr style="border-bottom: 1px solid #dee2e6;">
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
+                      </td>
+                      <td class="align-middle">
+                        <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-xs font-weight-bold">{{ $item->name }}</h6>
+                          </div>
+                      </td>
+                      <td class="align-middle">
+                        <span class="text-xs font-weight-bold">{{ $item->telp }}</span>
+                      </td>
+                      <td class="align-middle text-center text-sm text-capitalize">
+                        <span class="badge badge-sm bg-success">Konfirmasi</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-xs font-weight-bold">{{ $item->person }} Orang</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{date('d-m-Y', strtotime($item->reservation_date)) }}</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{ $item->reservation_time }} am</span>
+                      </td>
+                      <td class="align-middle text-center mr-3">
+                          <a href="{{ route('detail-reservasi', ['id' => $item->id]) }}"><button class="btn btn-warning btn-sm ms-auto mb-0 py-2 px-3 mr-3">Detail</button></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                  @endforeach
+                </table>
+              </div>
+              <div class="flex justify-center mt-3">
+                <nav aria-label="Page navigation">
+                    {{ $dtReservasi->links() }}
+                </nav>
             </div>
+            </div>
+          </div>
         </div>
-    </div>
-
-<script>
-  function previewImage() {
-    var input = document.getElementById('gambarPaket');
-    var preview = document.getElementById('gambarPreview');
-    preview.style.display = "block";
-
-    var reader = new FileReader();
-    reader.onload = function (e) {
-      preview.src = e.target.result;
-    };
-    
-    reader.readAsDataURL(input.files[0]);
-  }
-</script>
-
+      </div>
+</div>
 @endsection

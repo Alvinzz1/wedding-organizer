@@ -1168,7 +1168,7 @@
     #RESERVATION
   \*-----------------------------------*/
   
-  .reservation-form { margin-block-start: -270px; }
+  .reservation-form { margin-block-start: 80px; }
   
   .form-text { margin-block-end: 40px; }
   

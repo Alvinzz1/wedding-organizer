@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\Models\Reservasi;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ReservasiExport;
+use App\Imports\ReservasiImport;
 
 class ReservasiController extends Controller
 {
@@ -14,18 +18,24 @@ class ReservasiController extends Controller
      */
     public function index()
     {
-        return view('reservasi.index');
+        $dtReservasi = Reservasi::paginate(8);
+        return view('reservasi.reservasi',compact('dtReservasi'));
     }
 
-<<<<<<< HEAD
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function konfirmasi()
     {
-        //
+        return view('reservasi.konfirmasi-reservasi');
+    }
+
+    public function detail($id)
+    {
+        $reservasi = Reservasi::findOrFail($id);
+        return view('reservasi.detail-reservasi', compact('reservasi'));
     }
 
     /**
@@ -34,10 +44,34 @@ class ReservasiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'telp' => 'required',
+            'person' => 'required|numeric',
+            'reservation_date' => 'required|date',
+            'reservation_time' => 'required',
+        ]);
+    
+        try {
+            $reservasi = Reservasi::create([
+                'name' => $request->name,
+                'telp' => $request->telp,
+                'person' => $request->person,
+                'reservation_date' => $request->reservation_date,
+                'reservation_time' => $request->reservation_time,
+                'message' => $request->message,
+            ]);
+    
+    
+            return redirect('/')->withSuccess('Reservasi berhasil disimpan!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->withErrors(['error' => 'Terjadi kesalahan. Mohon coba lagi.']);
+        }
     }
+    
 
     /**
      * Display the specified resource.
@@ -58,7 +92,7 @@ class ReservasiController extends Controller
      */
     public function edit($id)
     {
-        //
+       //
     }
 
     /**
@@ -81,12 +115,25 @@ class ReservasiController extends Controller
      */
     public function destroy($id)
     {
-        //
-=======
+        $reservasi = Reservasi::findorfail($id);
+        $reservasi->delete();
 
-    public function store()
+        return back()->with('info','Data Berhasil Dihapus !');
+    }
+
+    public function export() 
     {
-        
->>>>>>> c84618d7de38b80b4c86081e0962ef048d2ee7f4
+        return Excel::download(new ReservasiExport, 'reservasi.xlsx');
+    }
+
+    public function import(Request $request) 
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        Excel::import(new ReservasiImport, $request->file('file'));
+
+        return redirect()->back()->with('success', 'Data berhasil diimpor.');
     }
 }

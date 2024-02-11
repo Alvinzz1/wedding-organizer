@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal_events');
             $table->string('nama_pasangan', 100);
-            $table->text('testimoni')->nullable();
-            $table->string('image')->nullable();
+            $table->string('lokasi')->nullable();
+            $table->text('video')->nullable();
             $table->timestamps();
         });
     }

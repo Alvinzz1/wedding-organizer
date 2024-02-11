@@ -8,9 +8,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Pricelist</li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Testimoni</li>
           </ol>
-          <h6 class="font-weight-bolder text-white mb-0">Tambah Pricelist</h6>
+          <h6 class="font-weight-bolder text-white mb-0">Tambah Testimoni</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -123,39 +123,42 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="card-body">
-                            <h6>Tambah Data Pricelist</h6>
-                            <form action="{{ route('submit-pricelist') }}" method="post" enctype="multipart/form-data">
+                            <h6>Tambah Data Testimoni</h6>
+                            <form action="{{ route('submit-testimoni') }}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="row mt-4">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Nama Paket</label>
-                                            <input class="form-control" type="text" name="nama_pricelist" placeholder="Masukan Nama Paket">
+                                            <label for="example-text-input" class="form-control-label">Nama Pasangan</label>
+                                            <input class="form-control" type="text" name="nama_pasangan" placeholder="Masukan Nama Pasangan">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Harga Paket</label>
-                                            <input class="form-control" type="number" name="harga" placeholder="Masukan Harga Paket">
+                                            <label for="example-text-input" class="form-control-label">Tanggal Events</label>
+                                            <input class="form-control" type="date" name="tanggal_events" placeholder="Masukan Tanggal Events">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Bonus Paket</label>
-                                            <textarea class="form-control" name="bonus_pricelist" type="text" placeholder="Masukan Bonus Paket"></textarea>
+                                            <label for="example-text-input" class="form-control-label">Lokasi</label>
+                                            <textarea class="form-control" name="lokasi" type="text" placeholder="Masukan Lokasi Pernikahan"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Gambar Paket</label>
-                                            <input class="form-control" type="file" id="gambarPaket" name="image" onchange="previewImage()">
-                                            <img class="mt-3" id="gambarPreview" src="https://via.placeholder.com/150" alt="Preview" style="max-width: 100%; height: auto; display: none;">
+                                            <label for="example-text-input" class="form-control-label">Video Testimoni</label>
+                                            <input class="form-control" type="file" id="videoTestimoni" name="video" accept="video/*">
+                                            <video class="mt-3" id="videoPreview" width="320" height="240" controls style="display: none;">
+                                                <source src="" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-sm ms-auto mt-4">Submit</button>
-                                        <a href="{{ route('pricelist') }}" class="btn btn-primary btn-sm ms-auto mt-4" style="margin-right: 5px;">Back</a>
+                                        <a href="{{ route('testimoni') }}" class="btn btn-primary btn-sm ms-auto mt-4" style="margin-right: 5px;">Back</a>
                                         </div>
                                     </div>
                                 </div>

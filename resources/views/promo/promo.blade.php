@@ -8,9 +8,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Testimoni</li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Promo</li>
           </ol>
-          <h6 class="font-weight-bolder text-white mb-0">Testimoni</h6>
+          <h6 class="font-weight-bolder text-white mb-0">Promo</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -123,61 +123,82 @@
           <div class="card mb-4">
             <div class="card-header pb-0">
             <div class="d-flex align-items-center">
-              <h6>Testimoni table</h6>
-              <button class="btn btn-primary btn-sm ms-auto" href="javascript:;">Tambah</button>
+              <h6>Promo table</h6>
+              <a href="{{ route('create-promo') }}" class="btn btn-primary btn-sm ms-auto">Tambah</a>
             </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-              <table class="table align-items-center mb-0">
+                <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Images</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Author</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Images</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Promo</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga Awal</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga Promo</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bonus</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                     </tr>
                   </thead>
+                  @foreach ($dtPromo as $item)
                   <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1 flex-column justify-content-center">
-                          <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                          </div>
-                        </div>
+                    <tr style="border-bottom: 1px solid #dee2e6;">
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
                       </td>
-                      <td>
+                      <td class="align-middle text-center">
+                          <div class="d-flex flex-column justify-content-center align-items-center" style="padding-top: 10px; padding-bottom: 10px;">
+                          <img src="/storage/{{ $item->image }}" style="width: 100px; height: 120px; border-radius: 10px; object-fit: cover; object-position: center; cursor: pointer;" onclick="showImageModal('{{ $item->image }}')">
+                          </div>
+                          <script>
+                            function showImageModal(imageUrl) {
+                              Swal.fire({
+                                title: '',
+                                html: `<div style="padding: 25px;">
+                                            <img src="/storage/${imageUrl}" style="max-width: 100%; height: auto; border-radius: 10px;">
+                                        </div>`,
+                                showCloseButton: true,
+                                showCancelButton: false,
+                                focusConfirm: false,
+                                confirmButtonText: 'Close',
+                            });
+                            }
+                        </script>
+                      </td>
+                      <td class="align-middle text-center">
                         <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-xs font-weight-bold">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                            <h6 class="mb-0 text-xs font-weight-bold">{{ $item->nama_promo }}</h6>
                           </div>
                       </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Organization</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
+                      <td class="align-middle text-center">
+                        <span class="text-xs font-weight-bold">Rp. {{ $item->harga_awal }}-,</span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                        <span class="text-xs font-weight-bold">Rp. {{ $item->harga }}-,</span>
                       </td>
                       <td class="align-middle text-center">
-                        <a class="btn btn-link text-xs text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                        <a class="btn btn-link text-xs text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                        <span class="text-secondary text-xs font-weight-bold">{{ $item->bonus_promo }}</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <a href="{{ route('delete-promo', $item->id) }}" class="btn btn-link text-xs text-danger text-gradient px-3 mb-0"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                        <a href="{{ route('edit-promo', $item->id) }}" class="btn btn-link text-xs text-dark px-3 mb-0"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                       </td>
                     </tr>
                   </tbody>
+                  @endforeach
                 </table>
               </div>
+              <div class="flex justify-center mt-3">
+                <nav aria-label="Page navigation">
+                    {{ $dtPromo->links() }}
+                </nav>
+            </div>
             </div>
           </div>
         </div>
       </div>
 </div>
 
-
+@include('sweetalert::alert')
 @endsection

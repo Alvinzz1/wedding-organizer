@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('pricelists', function (Blueprint $table) {
             $table->id();
             $table->string('nama_pricelist', 100);
-            $table->decimal('harga', 10, 2);
-            $table->text('detail_pricelist')->nullable();
+            $table->decimal('harga');
+            $table->text('bonus_pricelist')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });
